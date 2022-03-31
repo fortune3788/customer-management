@@ -1,0 +1,29 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <%= form_with(model: @client) do |f| %>
+      <div class="mb-3">
+        <%= f.label :name, '＋新しい顧客を追加する' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <%= f.submit '追加する', class: 'btn btn-primary w-100' %>
+    <% end %>
+  </aside>
+  <div class="col-sm-8">
+    <h1>顧客一覧</h1>
+    <% if @clients.any? %>
+      <ul class="mt-2">
+        <% @clients.each do |client| %>
+          <li class="d-flex">
+            <div>
+              <%= client.name %>
+            </div>
+            <div>
+              <%= link_to '編集する', client %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    <% end %>
+  </div>
+</div>

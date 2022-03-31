@@ -1,0 +1,13 @@
+<div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+  <div class="text-center text-white">
+    <h1>顧客の名前を編集する</h1>
+    <%= form_with(model: @client) do |f| %>
+      <%= f.label :name, '名前' %>
+      <%= f.text_field :name %>
+      
+      <%= f.submit '編集する' %>
+    <% end %>
+    <h1>この顧客を削除する</h1>
+    <%= link_to "削除する", @client, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: 'btn btn-danger btn-sm' %>
+  </div>
+</div>
