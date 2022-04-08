@@ -1,0 +1,43 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <%= form_with(model: [@client, @sale]) do |f| %>
+      <div class="mb-3">
+        <%= f.label :date, '＋日付' %>
+        <%= f.text_field :date, class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :item, '＋購入したアイテム' %>
+        <%= f.text_field :item, class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :item_quantity, '＋購入した個数' %>
+        <%= f.text_field :item_quantity, class: 'form-control' %>
+      </div>
+      <%= f.submit '追加する', class: 'btn btn-primary w-100' %>
+    <% end %>
+  </aside>
+  <div class="col-sm-8">
+    <%= @client.name %>
+    <% if @sales.any? %>
+      <ul class="mt-2">
+        <% @sales.each do |sale| %>
+          <li class="d-flex">
+            <div>
+              <%= sale.date %>
+            </div>
+          </li>
+          <li>
+            <%= sale.item %>
+          </li>
+          <li>
+            <%= sale.item_quantity %>
+          </li>
+          <div>
+            <%= link_to '編集する', client_sale_path(id: sale) %>
+          </div>
+        <% end %>
+      </ul>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    <% end %>
+  </div>
+</div>

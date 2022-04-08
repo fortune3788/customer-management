@@ -1,0 +1,19 @@
+<div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+  <div class="text-center text-white">
+    <h1>この売上情報を編集する</h1>
+    <%= form_with(model: [@client, @sale]) do |f| %>
+      <%= f.label :date, '日付' %>
+      <%= f.text_field :date %>
+      
+      <%= f.label :item, '購入したアイテム' %>
+      <%= f.text_field :item %>
+      
+      <%= f.label :item_quantity, '個数' %>
+      <%= f.text_field :item_quantity %>
+      
+      <%= f.submit '編集する' %>
+    <% end %>
+    <h1>この顧客を削除する</h1>
+    <%= link_to "削除する", [@client, @sale], method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: 'btn btn-danger btn-sm' %>
+  </div>
+</div>

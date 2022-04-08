@@ -15,7 +15,7 @@
         <% @clients.each do |client| %>
           <li class="d-flex">
             <div>
-              <%= client.name %>
+              <%=link_to client.name, client_sales_path(client) %>
             </div>
             <div>
               <%= link_to '編集する', client %>

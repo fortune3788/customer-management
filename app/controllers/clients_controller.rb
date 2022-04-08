@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :correct_user, only: [:destroy, :show, :update]
+  before_action :require_user_logged_in, only: [:index, :show]
   
   def index
     @client = current_user.clients.build
@@ -34,7 +35,7 @@ class ClientsController < ApplicationController
   def destroy
     @client.destroy
     flash[:success] = 'この顧客を削除しました'
-    redirect_back(fallback_location: root_path)
+    redirect_to clients_path
   end
   
   private
