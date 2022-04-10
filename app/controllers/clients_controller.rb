@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :correct_user, only: [:destroy, :show, :update]
+  before_action :correct_user, only: [:destroy, :update]
   before_action :require_user_logged_in, only: [:index, :show]
   
   def index
@@ -8,6 +8,7 @@ class ClientsController < ApplicationController
   end
   
   def show
+    @client = current_user.clients.find_by(id: params[:id])
   end
   
   def create

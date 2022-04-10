@@ -9,20 +9,16 @@
     <% end %>
   </aside>
   <div class="col-sm-8">
-    <h1>顧客一覧</h1>
+    <h1 class="ms-4">顧客一覧</h1>
     <% if @clients.any? %>
-      <ul class="mt-2">
-        <% @clients.each do |client| %>
-          <li class="d-flex">
-            <div>
-              <%=link_to client.name, client_sales_path(client) %>
-            </div>
-            <div>
-              <%= link_to '編集する', client %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+      <% @clients.each do |client| %>
+        <div class="card mb-3">
+          <div class="card-body justify-content-between">
+            <%=link_to client.name, client_sales_path(client), class: 'card-title link-dark' %>
+            <%= link_to '編集する', client, class: 'card-link btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
       <%== pagy_bootstrap_nav(@pagy) %>
     <% end %>
   </div>
